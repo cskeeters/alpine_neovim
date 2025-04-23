@@ -1,5 +1,5 @@
-FROM alpine:3.17.1
-RUN apk add --no-cache bash neovim python3 py3-pip ctags git mercurial fzf the_silver_searcher
+FROM alpine:latest
+RUN apk add --no-cache bash neovim python3 py3-pip ctags git mercurial fzf the_silver_searcher py3-wheel py3-pynvim
 
 WORKDIR "/opt"
 RUN git clone https://github.com/chriskempson/base16-shell
@@ -9,8 +9,6 @@ ADD dotvim.tgz /root/
 
 # neovim from pip3 is required for python3 vim plugins (ultisnips)
 ENV PIP_ROOT_USER_ACTION=ignore
-RUN pip3 install wheel
-RUN pip3 install neovim
 
 ADD bashrc /root/.bashrc
 ADD inputrc /root/.inputrc

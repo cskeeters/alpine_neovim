@@ -4,7 +4,7 @@ APP_NAME=DELETE
 RUN_FLAGS=-it --rm
 
 build: dotvim.tgz
-	$(ENGINE) build -t $(IMAGE) .
+	$(ENGINE) build -t $(IMAGE) --pull .
 
 bash:
 	$(ENGINE) run $(RUN_FLAGS) --name $(APP_NAME) $(IMAGE) /bin/bash
